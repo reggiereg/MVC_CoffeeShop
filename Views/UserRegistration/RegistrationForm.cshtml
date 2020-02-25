@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "RegistrationForm";
+}
+
+<!--Excepts the RegisteredUser object-->
+@model RegisterUser
+
+<!--Header for the page-->
+<h1 style="background-color:cadetblue">Registration Form</h1>
+
+<!--Validation Summary for form fields-->
+@Html.ValidationSummary()
+
+
+<!--Styling for Validation Summary-->
+<style>
+    input:invalid 
+    {
+        border: 4px dashed red;
+    }
+
+    input:invalid:required 
+    {
+        background-image: linear-gradient(to right, red, green);
+    }
+
+    input:valid 
+    {
+        border: 2px solid black;
+    }
+</style>
+
+<!--User Registration form-->
+<form action="../UserRegistration/WelcomePage" method="post">
+    <label style="background-color:aliceblue">Enter a User Name: </label>
+    @Html.ValidationMessageFor(m => m.UserName)
+    <input type="text" name="UserName" required minlength ="4" /><br />
+    <label style="background-color:aliceblue">Enter an Email for this Account: </label>
+    @Html.ValidationMessageFor(m => m.Email)
+    <input type="text" name="Email" required  /><br />
+    <label style="background-color:aliceblue">Enter a Password for this Account: </label>
+    @Html.ValidationMessageFor(m => m.Password)
+    <input type="text" name="Password" required minlength ="8" /><br />
+    <input style="background-color:cadetblue" type="submit" value="Submit New User Info" />
+</form>
+
